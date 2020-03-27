@@ -11,7 +11,7 @@ session_start();
 define('PRIVATE_PATH', dirname(__FILE__));
 define('PROJECT_PATH', dirname(PRIVATE_PATH));
 define('PUBLIC_PATH', PROJECT_PATH . '/public');
-define('SHARED_PATH', PRIVATE_PATH . '/shared/');
+define('SHARED_PATH', PRIVATE_PATH . '/includes');
 
 // Get url root to make it easier to link files
 $public_end = strpos($_SERVER['SCRIPT_NAME'], '/public') + 7;
