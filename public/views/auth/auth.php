@@ -1,6 +1,7 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
 <?php include_once(SHARED_PATH . '/auth/auth_form_handlers/register_handler.php'); ?>
+<?php include_once(SHARED_PATH . '/auth/auth_form_handlers/login_handler.php'); ?>
 
 <?php include_once(SHARED_PATH . '/auth/auth_header.php'); ?>
 
@@ -11,6 +12,12 @@
     </div>
 
     <div class="login-form shadow-sm p-3 mb-5 bg-white rounded" id="login_form">
+        <p class="error">
+            <?php echo in_array("Email or Password was incorrect.", $error) ? "Email or Password was incorrect." : ""; ?>
+        </p>
+        <p class="error">
+            <?php echo in_array("Sorry no user with your credentials exist in our DB.", $error) ? "Sorry no user with your credentials exist in our DB." : ""; ?>
+        </p>
         <form action="#" method="POST">
             <div class="form-group">
                 <label for="login_email">Email address</label>
@@ -44,8 +51,8 @@
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 <p class="error">
                     <?php
-                        if (in_array("Email already in use.", $error)) echo "Email already in use.";
-                        else if (in_array("Invalid format.", $error)) echo "Invalid format.";
+                    if (in_array("Email already in use.", $error)) echo "Email already in use.";
+                    else if (in_array("Invalid format.", $error)) echo "Invalid format.";
                     ?>
                 </p>
             </div>
@@ -54,8 +61,8 @@
                 <input type="password" class="form-control" name="register_password" id="register_password" placeholder="Password">
                 <p class="error">
                     <?php
-                        if (in_array("Your password can only contain english characters or numbers.", $error)) echo "Your password can only contain english characters or numbers.";
-                        else if (in_array("Your password must be between 5 and 30 characters.", $error)) echo "Your password must be between 5 and 30 characters.";
+                    if (in_array("Your password can only contain english characters or numbers.", $error)) echo "Your password can only contain english characters or numbers.";
+                    else if (in_array("Your password must be between 5 and 30 characters.", $error)) echo "Your password must be between 5 and 30 characters.";
                     ?>
                 </p>
             </div>
