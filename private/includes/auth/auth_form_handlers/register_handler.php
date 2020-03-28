@@ -61,10 +61,10 @@ if (isset($_POST['register_submit']) && filter_has_var(INPUT_POST, 'register_sub
     }
 
     // Get gender values
+    $gender_options = h(st($_POST['optradio']));
+    
     if (empty($gender_options)) {
         array_push($error, "You need to choose a gender.");
-    } else {
-        $gender_options = h(st($_POST['optradio']));
     }
 
     // Check if there are no errors, if there aren't any then do the DB logic and register new user
