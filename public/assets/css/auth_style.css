@@ -1,4 +1,29 @@
 @font-face {
     font-family: BalooThambi2-Regular;
-    src: url('public/assets/fonts/BalooThambi2-Regular.ttf');
+    src: url('../fonts/BalooThambi2-Regular.ttf');
+}
+
+.form-wrapper {
+    margin-top: 60px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 7px;
+    font-family: 'BalooThambi2-Regular', 'sans-serif';
+    color: #3a446b;
+}
+
+.register-form {
+    display: none;
+}
+
+.form-actions a {
+    text-decoration: none;
+}
+
+.auth-header {
+    margin-bottom: 15px;
+}
+
+.auth-header small {
+    color: #e09b60;
 }
