@@ -13,10 +13,10 @@
 
     <div class="login-form shadow-sm p-3 mb-5 bg-white rounded" id="login_form">
         <p class="error">
-            <?php echo in_array("Email or Password was incorrect.", $error) ? "Email or Password was incorrect." : ""; ?>
+            <?php echo in_array("Email or Password was incorrect.", $error) ? "<span>&#8594;</span> Email or Password was incorrect." : ""; ?>
         </p>
         <p class="error">
-            <?php echo in_array("Sorry no user with your credentials exist in our DB.", $error) ? "Sorry no user with your credentials exist in our DB." : ""; ?>
+            <?php echo in_array("Sorry no user with your credentials exist in our DB.", $error) ? "<span>&#8594;</span> Sorry no user with your credentials exist in our database." : ""; ?>
         </p>
         <form action="#" method="POST">
             <div class="form-group">
@@ -42,7 +42,7 @@
                 <label for="register_username">Username</label>
                 <input type="text" class="form-control" name="register_username" id="register_username" placeholder="Enter username" value="<?php echo isset($_POST['register_username']) ? $_POST['register_username'] : ''; ?>">
                 <p class="error">
-                    <?php echo in_array("Your username must be between 2 and 25 characters.", $error) ? "Your username must be between 2 and 25 characters." : ""; ?>
+                    <?php echo in_array("Your username must be between 2 and 25 characters.", $error) ? "<span>&#8594;</span> Your username must be between 2 and 25 characters." : ""; ?>
                 </p>
             </div>
             <div class="form-group">
@@ -51,8 +51,8 @@
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                 <p class="error">
                     <?php
-                    if (in_array("Email already in use.", $error)) echo "Email already in use.";
-                    else if (in_array("Invalid format.", $error)) echo "Invalid format.";
+                    if (in_array("Email already in use.", $error)) echo "<span>&#8594;</span> Email already in use.";
+                    else if (in_array("Invalid format.", $error)) echo "<span>&#8594;</span> Invalid format.";
                     ?>
                 </p>
             </div>
@@ -61,8 +61,8 @@
                 <input type="password" class="form-control" name="register_password" id="register_password" placeholder="Password">
                 <p class="error">
                     <?php
-                    if (in_array("Your password can only contain english characters or numbers.", $error)) echo "Your password can only contain english characters or numbers.";
-                    else if (in_array("Your password must be between 5 and 30 characters.", $error)) echo "Your password must be between 5 and 30 characters.";
+                    if (in_array("Your password can only contain english characters or numbers.", $error)) echo "<span>&#8594;</span> Your password can only contain english characters or numbers.";
+                    else if (in_array("Your password must be between 5 and 30 characters.", $error)) echo "<span>&#8594;</span> Your password must be between 5 and 30 characters.";
                     ?>
                 </p>
             </div>
@@ -70,7 +70,7 @@
                 <label for="register_password2">Confirm Password</label>
                 <input type="password" class="form-control" name="register_password2" id="register_password2" placeholder="Confirm Password">
                 <p class="error">
-                    <?php echo in_array("Your passwords do not match.", $error) ? "Your passwords do not match." : ""; ?>
+                    <?php echo in_array("Your passwords do not match.", $error) ? "<span>&#8594;</span> Your passwords do not match." : ""; ?>
                 </p>
             </div>
 
@@ -87,7 +87,7 @@
                     </label>
                 </div>
                 <p class="error">
-                    <?php echo in_array("You need to choose a gender.", $error) ? "You need to choose a gender." : ""; ?>
+                    <?php echo in_array("You need to choose a gender.", $error) ? "<span>&#8594;</span> You need to choose a gender." : ""; ?>
                 </p>
             </div>
             <hr>
