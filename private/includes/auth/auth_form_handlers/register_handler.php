@@ -96,6 +96,8 @@ if (isset($_POST['register_submit']) && filter_has_var(INPUT_POST, 'register_sub
         $user->created_at = date('Y-m-d');
         $user->updated_at = date('Y-m-d');
 
-        $user->create();
+        if ($user->create()) {
+            redirect_to('auth.php');
+        }
     }
 }
