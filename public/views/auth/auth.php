@@ -12,6 +12,9 @@
     </div>
 
     <div class="login-form shadow-sm p-3 mb-5 bg-white rounded" id="login_form">
+        <p class="success" id="success">
+            <?php echo isset($_SESSION['pass-reset']) ? $_SESSION['pass-reset'] : ''; ?>
+        </p>
         <p class="error">
             <?php echo in_array("Email or Password was incorrect.", $error) ? "<span>&#8594;</span> Email or Password was incorrect." : ""; ?>
         </p>
@@ -29,6 +32,9 @@
             </div>
             <div class="form-actions text-center">
                 <button type="submit" name="login_submit" class="btn btn-primary login_submit">Login</button>
+                <p>
+                    <a href="<?php echo url_for('views/auth/forgot_password.php'); ?>" id="forgot_password" class="forgot-password">Forgot your Password?</a>
+                </p>
                 <p>
                     <a href="#" id="signup" class="signup">Need an account? Register here!</a>
                 </p>
