@@ -34,6 +34,7 @@ if (isset($_POST['login_submit']) && filter_has_var(INPUT_POST, 'login_submit'))
 
             // get the username searched and assign it to the session for usage after login
             $_SESSION['username'] = $username;
+            unset($_SESSION['pass-reset']);
 
             // redirect to home page if everything went right
             redirect_to('../index.php');
