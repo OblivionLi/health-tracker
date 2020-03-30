@@ -48,8 +48,11 @@ if (empty($token)) {
                 // update and redirect
                 if ($user->update_user($email, $password, $updated_at)) {
                     $user->delete_password_reset($email);
+                    $_SESSION['pass-reset'] = "Password has been reset.";
                     redirect_to('auth.php');
                 }
+            } else {
+                redirect_to('auth.php');
             }
         }
     }
