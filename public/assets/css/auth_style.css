@@ -27,3 +27,8 @@
 .auth-header small {
     color: #e09b60;
 }
+
+.error {
+    color: #e25b5b;
+    font-weight: 600;
+}
