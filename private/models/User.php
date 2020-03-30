@@ -80,7 +80,7 @@
         {
             // Create query
             $query = 'INSERT INTO ' . $this->table . '
-                    VALUES
+                    SET
                         username= :username,
                         email= :email,
                         password= :password,
@@ -126,7 +126,7 @@
             }
 
             // Print error if something went wrong
-            printf('Error: %s.\n', $stmt->error);
+            var_dump('Error: %s.\n', $stmt->error);
 
             return false;
         }
@@ -173,5 +173,109 @@
 
             // Execute query
             $stmt->execute();
+        }
+
+        // query to create entry with email and token
+        public function create_password_reset($email, $token)
+        {
+            // Create query
+            $query = 'INSERT INTO password_resets ' . '
+                    SET
+                        email= :email,
+                        token= :token
+                ';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Clean data
+            $this->email = h(st($email));
+            $this->token = h(st($token));
+
+            // Bind data
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':token', $token);
+
+            // Execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+
+            // Print error if something went wrong
+            printf('Error: %s.\n', $stmt->error);
+
+            return false;
+        }
+
+        // query to get email from password_reset table basked on token
+        public function read_password_reset($token)
+        {
+            // Create query
+            $query = 'SELECT email FROM password_resets
+                    WHERE  token = :token
+                    LIMIT 0,1';
+
+            // Prepare statemenet
+            $stmt = $this->conn->prepare($query);
+
+            // Bind token
+            $stmt->bindParam(':token', $token);
+
+            // Execute query
+            $stmt->execute();
+
+            return $stmt;
+        }
+
+        // query to delete password_reset entry after successful password reset
+        public function delete_password_reset($email)
+        {
+            // Create query
+            $query = 'DELETE FROM password_resets WHERE email = :email';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Clean data
+            $this->email = h(st($email));
+
+            // Bind data
+            $stmt->bindParam(':email', $email);
+
+            // Execute query
+            if ($stmt->execute()) {
+                return true;
+            }
+
+            // Print error if something is wrong
+            printf('Error: %s.\n', $stmt->error);
+
+            return false;
+        }
+
+        // update user based on the email taken from the password_reset request
+        public function update_user($email, $password, $updated_at)
+        {
+            // Create query
+            $query = 'UPDATE ' . $this->table . ' 
+                    SET 
+                        password = :password,
+                        updated_at = :updated_at
+                    WHERE 
+                        email= :email
+                ';
+
+            // Prepare statemenet
+            $stmt = $this->conn->prepare($query);
+
+            // Bind data
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':password', $password);
+            $stmt->bindParam(':updated_at', $updated_at);
+
+            // Execute query
+            $stmt->execute();
+
+            return $stmt;
         }
     }
