@@ -39,6 +39,6 @@ function is_logged() {
     if (isset($_SESSION['username'])) {
         return true;
     } else {
-        redirect_to('/health-tracker/public/views/auth/auth.php');
+        redirect_to(url_for('views/auth/auth.php'));
     }
 }
