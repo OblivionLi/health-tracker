@@ -33,3 +33,12 @@ function is_get_request() {
 function redirect_to($location) {
     header('Location: ' . $location);
 }
+
+// Check if $_SESSION['username'] is set
+function is_logged() {
+    if (isset($_SESSION['username'])) {
+        return true;
+    } else {
+        redirect_to('/health-tracker/public/views/auth/auth.php');
+    }
+}
