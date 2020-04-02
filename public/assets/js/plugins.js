@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    $("#change-pass").click(function() {
-        $("#change-password").toggle("slow");
-    });
+    // $("#change-pass").click(function() {
+    //     $("#change-password").toggle("slow");
+    // });
 
-    $("#close-acc").click(function() {
-        $("#close-account").toggle("slow");
-    });
+    // $("#close-acc").click(function() {
+    //     $("#close-account").toggle("slow");
+    // });
 
     $("#weight-height").click(function() {
         $("#weight-height-content").slideDown("slow", function() {
