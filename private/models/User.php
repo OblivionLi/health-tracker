@@ -131,6 +131,7 @@
                                 email= :email,
                                 password= :password,
                                 gender= :gender,
+                                user_closed= :user_closed,
                                 updated_at= :updated_at
                             WHERE 
                                 username= :username
@@ -144,6 +145,7 @@
             $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':password', $this->password);
             $stmt->bindParam(':gender', $this->gender);
+            $stmt->bindParam(':user_closed', $this->user_closed);
             $stmt->bindParam(':updated_at', $this->updated_at);
 
             // Execute query
