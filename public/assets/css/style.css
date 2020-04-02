@@ -26,18 +26,18 @@ body {
     font-weight: 400;
 }
 
-.change-password {
+/* .change-password {
     display: none;
-}
+} */
 
 #change-pass, #close-acc {
     font-size: 25px;
     color: red;
 }
 
-.close-account {
+/* .close-account {
     display: none;
-}
+} */
 
 .new-password {
     margin: 30px 0 30px 0;
