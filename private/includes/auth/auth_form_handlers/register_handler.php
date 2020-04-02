@@ -11,7 +11,6 @@ if (isset($_POST['register_submit']) && filter_has_var(INPUT_POST, 'register_sub
     // Instantiate User object
     $user = new User($db);
 
-
     // Convert special characters and strip tags from register_username form value
     $register_username = h(st($_POST['register_username']));
     $register_username = str_replace(' ', '', $register_username);
@@ -61,9 +60,9 @@ if (isset($_POST['register_submit']) && filter_has_var(INPUT_POST, 'register_sub
     }
 
     // Get gender values
-    $gender_options = h(st($_POST['optradio']));
-    
-    if (empty($gender_options)) {
+    if (isset($_POST['optradio'])) {
+        $gender_options = h(st($_POST['optradio']));
+    } else {
         array_push($error, "You need to choose a gender.");
     }
 
