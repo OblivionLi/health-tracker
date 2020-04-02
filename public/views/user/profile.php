@@ -45,11 +45,6 @@
                 </p>
             </div>
             <hr>
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="customFile">
-                <label class="custom-file-label" for="customFile">Change profile picture</label>
-            </div>
-
             <div class="new-password">
                 <a id="change-pass">Change Password</a>
                 <div class="change-password" id="change-password">
@@ -72,7 +67,7 @@
                     </div>
                 </div>
             </div>
-
+            <hr>
             <div class="close-acc">
                 <a id="close-acc">Close Account</a>
                 <div class="close-account" id="close-account">
