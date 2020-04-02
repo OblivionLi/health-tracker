@@ -32,6 +32,11 @@ if (isset($_POST['update_submit']) && filter_has_var(INPUT_POST, 'update_submit'
     $update_email = h(st($_POST['update_email']));
     $update_email = str_replace(' ', '', $update_email);
 
+    // Convert special characters and strip tags from update_user_closed form value
+    if (isset($_POST['close'])) {
+        $update_user_closed = h(st($_POST['close']));
+    }
+
     // Check if update_email valid
     if (filter_var($update_email, FILTER_VALIDATE_EMAIL)) {
         $update_email = filter_var($update_email, FILTER_VALIDATE_EMAIL);
@@ -57,9 +62,7 @@ if (isset($_POST['update_submit']) && filter_has_var(INPUT_POST, 'update_submit'
     $update_password2 = h(st($_POST['update_password2']));
 
     // if passwords field empty, do not change
-    if (empty($update_password) && empty($update_password2)) {
-        $update_password = $existing_password;
-    } else {
+    if (isset($update_password) && !empty($update_password)) {
         // Check if update_password and update_password2 don't match or if they contain other characters than A-Z, 0-9
         if ($update_password != $update_password2) {
             array_push($error, "Your passwords do not match.");
@@ -79,7 +82,15 @@ if (isset($_POST['update_submit']) && filter_has_var(INPUT_POST, 'update_submit'
     if (empty($error)) {
         // assign update values to user object
         $user->email = $update_email;
-        $user->password = $user->hash_password($update_password);
+
+        // check if form password field is not empty
+        if (!empty($update_password)) {
+            // hash the value and assign it to the object user password
+            $user->password = $user->hash_password($update_password);
+        } else {
+            // if form password field is empty then save the previous password
+            $user->password = $existing_password;
+        }
 
         // check if gender is male or female and assign the value to user object
         if ($gender_options == "male") {
@@ -88,9 +99,25 @@ if (isset($_POST['update_submit']) && filter_has_var(INPUT_POST, 'update_submit'
             $user->gender = $gender_options;
         }
 
+        // check if closing user checkbox is checked
+        if ($update_user_closed == "on") {
+            // close user
+            $user->user_closed = "yes";
+        } else {
+            $user->user_closed = "no";
+        }
+
+        // get date present
         $user->updated_at = date('Y-m-d');
 
-        $user->update($username);
-        redirect_to(url_for('views/user/profile.php'));
+        if ($user->update($username)) {
+            return true;
+        }
+
+        if ($user->user_closed == "yes") {
+            redirect_to(url_for('views/auth/auth.php'));
+        } else {
+            redirect_to(url_for('views/user/profile.php'));
+        }
     }
 }
