@@ -14,7 +14,6 @@
         public $height = 0;
         public $weight = 0;
         public $gender;
-        public $profile_pic;
         public $user_closed;
         public $created_at;
         public $updated_at;
@@ -84,10 +83,7 @@
                         username= :username,
                         email= :email,
                         password= :password,
-                        height= :height,
-                        weight= :weight,
                         gender= :gender,
-                        profile_pic= :profile_pic,
                         user_closed= :user_closed,
                         created_at= :created_at,
                         updated_at= :updated_at
@@ -100,10 +96,7 @@
             $this->username = h(st($this->username));
             $this->email = h(st($this->email));
             $this->password = h(st($this->password));
-            $this->height = h(st($this->height));
-            $this->weight = h(st($this->weight));
             $this->gender = h(st($this->gender));
-            $this->profile_pic = h(st($this->profile_pic));
             $this->user_closed = h(st($this->user_closed));
             $this->created_at = h(st($this->created_at));
             $this->updated_at = h(st($this->updated_at));
@@ -112,10 +105,7 @@
             $stmt->bindParam(':username', $this->username);
             $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':password', $this->password);
-            $stmt->bindParam(':height', $this->height);
-            $stmt->bindParam(':weight', $this->weight);
             $stmt->bindParam(':gender', $this->gender);
-            $stmt->bindParam(':profile_pic', $this->profile_pic);
             $stmt->bindParam(':user_closed', $this->user_closed);
             $stmt->bindParam(':created_at', $this->created_at);
             $stmt->bindParam(':updated_at', $this->updated_at);
