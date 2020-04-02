@@ -81,17 +81,6 @@ if (isset($_POST['register_submit']) && filter_has_var(INPUT_POST, 'register_sub
             $user->gender = $gender_options;
         }
 
-
-        // create default profile pic for new registered user
-        $rand = rand(1, 2); // random between 1 and 2
-        if ($rand == 1) {
-            $profile_pic = "assets/images/profile_pics/defaults/default_profile_1.png";
-            $user->profile_pic = $profile_pic;
-        } else {
-            $profile_pic = "assets/images/profile_pics/defaults/default_profile_2.png";
-            $user->profile_pic = $profile_pic;
-        }
-
         $user->user_closed = 'no';
         $user->created_at = date('Y-m-d');
         $user->updated_at = date('Y-m-d');
