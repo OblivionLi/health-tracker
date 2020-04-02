@@ -86,9 +86,9 @@ if (isset($_POST['add_hw']) && filter_has_var(INPUT_POST, 'add_hw')) {
         } else {
             // else add values to the table
             if ($health->create()) {
-                return true;
+                redirect_to(url_for('views/index.php'));
             }
-            redirect_to(url_for('views/index.php'));
         }
+        redirect_to(url_for('views/index.php'));
     }
 }
