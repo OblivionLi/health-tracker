@@ -84,7 +84,7 @@
                 <p>Gender</p>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input type="radio" class="form-check-input" name="optradio" value="male">Male
+                        <input type="radio" class="form-check-input" name="optradio" checked value="male">Male
                     </label>
                 </div>
                 <div class="form-check">
