@@ -81,14 +81,14 @@ if (isset($_POST['add_hw']) && filter_has_var(INPUT_POST, 'add_hw')) {
         if ($num_rows > 0) {
             // if it is then just update the values
             if ($health->update($user_id)) {
-                redirect_to(url_for('views/index.php'));
+                return true;
             }
-
         } else {
             // else add values to the table
-            if($health->create()) {
-                redirect_to(url_for('views/index.php'));
+            if ($health->create()) {
+                return true;
             }
+            redirect_to(url_for('views/index.php'));
         }
     }
 }
