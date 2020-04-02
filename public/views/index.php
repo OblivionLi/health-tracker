@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <label for="add_weight">
-                                <h3>Weight (cm)</h3>
+                                <h3>Weight (kg)</h3>
                             </label>
                             <input type="number" class="form-control" name="add_weight" id="add_weight" placeholder="Enter weight" value="<?php echo isset($getWeight) ? $getWeight : ''; ?>">
                             <p class="error">
