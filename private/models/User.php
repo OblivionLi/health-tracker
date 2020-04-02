@@ -131,6 +131,57 @@
             return false;
         }
 
+        // get all user data based on email and if user account closed
+        public function update($username)
+        {
+            // Create query
+            $query = 'UPDATE ' . $this->table . ' 
+                            SET 
+                                username= :username,
+                                email= :email,
+                                password= :password,
+                                gender= :gender,
+                                updated_at= :updated_at
+                            WHERE 
+                                username= :username
+                        ';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Bind data
+            $stmt->bindParam(':username', $username);
+            $stmt->bindParam(':email', $this->email);
+            $stmt->bindParam(':password', $this->password);
+            $stmt->bindParam(':gender', $this->gender);
+            $stmt->bindParam(':updated_at', $this->updated_at);
+
+            // Execute query
+            $stmt->execute();
+        }
+
+        // Get user by username
+        public function read_user_by_username($username)
+        {
+            // Create query
+            $query = 'SELECT * FROM ' . $this->table . '
+                    WHERE
+                        username= :username
+                    LIMIT 0,1
+                ';
+
+            // Prepare statement
+            $stmt = $this->conn->prepare($query);
+
+            // Bind data
+            $stmt->bindParam(':username', $username);
+
+            // Execute query
+            $stmt->execute();
+
+            return $stmt;
+        }
+
         // get all user data based on email and password
         public function read_user($email)
         {
