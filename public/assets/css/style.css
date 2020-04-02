@@ -1,0 +1,109 @@
+@font-face {
+    font-family: BalooThambi2-Regular;
+    src: url('../fonts/BalooThambi2-Regular.ttf');
+}
+
+html {
+    overflow-y: scroll;
+}
+
+body {
+    font-family: 'BalooThambi2-Regular', 'sans-serif';
+    color: #3a446b;
+}
+
+.navbar-header {
+    border-bottom: 1px solid #e09b60;
+}
+
+.error {
+    color: #e25b5b;
+    font-weight: 600;
+}
+
+.success {
+    color: #88bb88;
+    font-weight: 400;
+}
+
+.change-password {
+    display: none;
+}
+
+#change-pass, #close-acc {
+    font-size: 25px;
+    color: red;
+}
+
+.close-account {
+    display: none;
+}
+
+.new-password {
+    margin: 30px 0 30px 0;
+    cursor: pointer;
+}
+
+.close-acc {
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+
+.bmi-calc-content {
+    display: none;
+}
+
+.water-intake-content {
+    display: none;
+}
+
+.header {
+    font-weight: 600;
+    border-bottom: 1px solid #e09b60;
+    color: #e09b60 !important;
+}
+
+.content {
+    margin-top: 20px;
+}
+
+.bmi-result-content, .bmi-categories {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e09b60;
+}
+
+.bmi-result {
+    font-size: 25px;
+    color: #e09b60;
+}
+
+.underweight {
+    color: grey;
+}
+
+.normal {
+    color: green;
+}
+
+.overweight {
+    color: orange;
+}
+
+.obese {
+    color: red;
+}
+
+.water-intake-info {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e09b60;
+}
+
+.water-intake-info span {
+    color: #e09b60;
+    font-size: 20px;
+}
+
+
