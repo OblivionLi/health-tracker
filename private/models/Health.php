@@ -99,21 +99,6 @@
          $this->created_at = $created_at;
       }
 
-      // Get user data 
-      public function read()
-      {
-         // Create query
-         $query = 'SELECT * FROM ' . $this->table;
-
-         // Prepare statement
-         $stmt = $this->conn->prepare($query);
-
-         // Execute query
-         $stmt->execute();
-
-         return $stmt;
-      }
-
       // Create query for Health class
       public function create()
       {
