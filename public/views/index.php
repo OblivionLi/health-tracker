@@ -29,7 +29,7 @@
         <div class="weight-height-content" id="weight-height-content">
             <div class="row">
                 <div class="col-6">
-                    <form action="" method="POST">
+                    <form action="<?php url_for('views/index.php') ?>" method="POST">
                         <div class="form-group">
                             <label for="add_height">
                                 <h3>Height (cm)</h3>
