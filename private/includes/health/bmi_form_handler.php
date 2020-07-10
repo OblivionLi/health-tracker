@@ -15,19 +15,6 @@ $username = $_SESSION['username'];
 $user = new User($db);
 $health = new Health($db);
 
-// get all health DB data
-$health_data = $health->read();
-
-// fetch health data
-$fetch_health_data = $health_data->fetch(PDO::FETCH_ASSOC);
-
-// check if result exist
-if ($fetch_health_data) {
-    $getWeight = $fetch_health_data['weight'];
-    $getHeight = $fetch_health_data['height'];
-    $bmi = $health->calculate_bmi($getWeight, $getHeight);
-}
-
 // get all user's data based on the username
 $user_query = $user->read_user_by_username($username);
 
@@ -37,6 +24,19 @@ $fetch_user_data = $user_query->fetch(PDO::FETCH_ASSOC);
 // check if result exist
 if ($fetch_user_data) {
     $user_id = $fetch_user_data['id'];
+}
+
+// get all health DB data
+$health_data = $health->check_user_info($user_id);
+
+// fetch health data
+$fetch_health_data = $health_data->fetch(PDO::FETCH_ASSOC);
+
+// check if result exist
+if ($fetch_health_data) {
+    $getWeight = $fetch_health_data['weight'];
+    $getHeight = $fetch_health_data['height'];
+    $bmi = $health->calculate_bmi($getWeight, $getHeight);
 }
 
 if (isset($_POST['add_hw']) && filter_has_var(INPUT_POST, 'add_hw')) {
